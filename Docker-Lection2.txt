@@ -1,4 +1,8 @@
 
+multistage
+
+docker build -t test_multistage .
+
 Create volume:
 docker volume create my-vol
 
@@ -39,3 +43,10 @@ docker push localhost:5000/myfirstimage
 
 Pull it from your local registry
 docker pull localhost:5000/myfirstimage
+
+Delete images
+docker rmi $(docker images -a -q)
+
+Delete all
+
+docker system prune -a
