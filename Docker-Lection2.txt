@@ -14,7 +14,7 @@ docker volume inspect my-vol
 docker run --rm -v my-vol:/data -it ubuntu:20.10 /bin/bash
 echo "Hello" > /data/demo.txt
 cat /data/demo.txt
-docker run --rm -v my-vol:/data -it centos:8 /bin/bash -c "cat /data/demo.txt"
+docker run --rm -v my-vol:/test -it centos:8 /bin/bash -c "cat /data/demo.txt"
 
 docker run -v /srv:/host/srv --name demo --rm -it ubuntu:20.10 /bin/bash
 
