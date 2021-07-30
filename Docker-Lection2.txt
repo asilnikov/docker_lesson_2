@@ -1,0 +1,41 @@
+
+Create volume:
+docker volume create my-vol
+
+List volumes:
+docker volume ls
+
+Inspect a volume:
+docker volume inspect my-vol
+docker run --rm -v my-vol:/data -it ubuntu:20.10 /bin/bash
+echo "Hello" > /data/demo.txt
+cat /data/demo.txt
+docker run --rm -v my-vol:/data -it centos:8 /bin/bash -c "cat /data/demo.txt"
+
+docker run -v /srv:/host/srv --name demo --rm -it ubuntu:20.10 /bin/bash
+
+docker run -v /srv:/host/srv -v my-vol:/data --name demo--rm -it ubuntu:20.10 /bin/bash
+cat /data/demo.txt 
+
+Remove a volume:
+docker volume rm my-vol
+
+
+
+
+REGISTRY
+
+start registry
+docker run -d -p 5000:5000 --name registry registry:2
+
+Pull some image
+docker pull ubuntu
+
+Tag the image so that it points to your registry
+docker image tag ubuntu localhost:5000/myfirstimage
+
+Push
+docker push localhost:5000/myfirstimage
+
+Pull it from your local registry
+docker pull localhost:5000/myfirstimage
